@@ -1,6 +1,4 @@
 config BR2_PACKAGE_AESD_ASSIGNMENTS
-	bool "aesd-assignments"
-	help
-	  Clones and builds code from the assignment-3-and-later repository.
-	  Includes the writer executable, finder.sh, and finder-test.sh in the image.
-	  Used to understand Buildroot external trees and package integration.
+    bool "aesd-assignments"
+    help
+      Clones and builds code from the assignment-3-and-later repository.

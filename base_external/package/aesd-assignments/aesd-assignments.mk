@@ -1,32 +1,28 @@
 ##############################################################
 #
-# AESD-ASSIGNMENTS
+# aesd-assignments
 #
 ##############################################################
 
-# Replace with the actual commit hash if needed (optional)
-AESD_ASSIGNMENTS_VERSION = 8d33801
+AESD_ASSIGNMENTS_VERSION = 8d33801e525cf6d109dafa8c53e61b83286d76e6
 
-# Use your SSH repo URL — this is important!
-AESD_ASSIGNMENTS_SITE = git@github.com:cu-ecen-aeld/assignment-4-Pei-Cheng-Yu.git
+AESD_ASSIGNMENTS_SITE = git@github.com:cu-ecen-aeld/assignments-3-and-later-MeowDFK.git
 AESD_ASSIGNMENTS_SITE_METHOD = git
 AESD_ASSIGNMENTS_GIT_SUBMODULES = YES
 
-AESD_ASSIGNMENTS_INSTALL_TARGET = YES
 
 define AESD_ASSIGNMENTS_BUILD_CMDS
-	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/finder-app
+	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/finder-app all
 endef
 
+# TODO add your writer, finder and finder-test utilities/scripts to the installation steps below
 define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
-	# Install scripts and binaries to /usr/bin
-	$(INSTALL) -D -m 0755 $(@D)/finder-app/finder.sh $(TARGET_DIR)/usr/bin/finder.sh
-	$(INSTALL) -D -m 0755 $(@D)/finder-app/finder-test.sh $(TARGET_DIR)/usr/bin/finder-test.sh
-	$(INSTALL) -D -m 0755 $(@D)/finder-app/writer $(TARGET_DIR)/usr/bin/writer
-
-	# Install conf directory contents to /etc
-	$(INSTALL) -d $(TARGET_DIR)/etc/finder-app/conf
-	$(INSTALL) -m 0644 $(@D)/finder-app/conf/* $(TARGET_DIR)/etc/finder-app/conf/
+	$(INSTALL) -d $(@D)/conf/ $(TARGET_DIR)/etc/finder-app/conf/
+	$(INSTALL) -m 0755 $(@D)/conf/* $(TARGET_DIR)/etc/finder-app/conf/
+	$(INSTALL) -m 0755 $(@D)/assignment-autotest/test/assignment4/* $(TARGET_DIR)/bin
+	$(INSTALL) -m 0755 $(@D)/finder-app/finder-test.sh $(TARGET_DIR)/usr/bin
+	$(INSTALL) -m 0755 $(@D)/finder-app/writer $(TARGET_DIR)/usr/bin
+	$(INSTALL) -m 0755 $(@D)/finder-app/finder.sh $(TARGET_DIR)/usr/bin
 endef
 
 $(eval $(generic-package))

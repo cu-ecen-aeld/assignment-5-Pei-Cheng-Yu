@@ -1,3 +1,0 @@
-menu "AESD custom packages"
-    source "package/aesd-assignments/Config.in"
-endmenu

@@ -1,2 +1,1 @@
-
-BR2_EXTERNAL_PROJECT_BASE_PATH := $(call realpath,$(dir $(lastword $(MAKEFILE_LIST))))
+include $(sort $(wildcard $(BR2_EXTERNAL_project_base_PATH)/package/*/*.mk))
